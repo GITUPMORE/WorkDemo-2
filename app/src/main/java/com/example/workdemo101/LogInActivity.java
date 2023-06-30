@@ -39,6 +39,7 @@ public class LogInActivity extends AppCompatActivity {
                     Toast.makeText(LogInActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(getApplicationContext(), Chat.class);
                     startActivity(intent);
+                    finish();
                 }
                 else
                 {

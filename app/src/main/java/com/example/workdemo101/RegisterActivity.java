@@ -10,9 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -22,9 +25,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         TextView btn = findViewById(R.id.already);
 
-        TextView name = findViewById(R.id.username);
-        TextView email = findViewById(R.id.Email);
-        TextView Pass = findViewById(R.id.Password);
+        TextView Username = findViewById(R.id.username);
+        TextView Email = findViewById(R.id.Email);
+        TextView Password = findViewById(R.id.Password);
         Button registerbtn = findViewById(R.id.btnofResigter);
 
 
@@ -33,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this,LogInActivity.class));
+
             }
         });
 
@@ -44,8 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
                 try {
                     if (connection != null)
                     {
-                        String sqlinsert = "Insert into UserInfo_Tab values('"+name.getText().toString()+"', '"+email.getText().toString()+"', '"+Pass.getText().toString()+"')";
-                    }
+                        String sqlinsert = "Insert into UserInfo values('"+Username.getText().toString()+"', '"+Email.getText().toString()+"', '"+Password.getText().toString()+"')";
+                        Statement st=connection.createStatement();
+                        ResultSet rs = st.executeQuery(sqlinsert);
+                       }
                 }
 
                 catch (Exception exception)
@@ -58,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
     @SuppressLint("NewApi")
     public Connection connection(){
         Connection conn = null;
-        String ip="10.162.55.120", port="50068" , username="Demo", password="koria", databasename="WorkDemo";
+        String ip="192.168.0.104", port="50068" , username="Demo", password="123", databasename="WorkDemo";
         StrictMode.ThreadPolicy tp = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(tp);
         try
