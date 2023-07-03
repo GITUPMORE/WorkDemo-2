@@ -3,13 +3,21 @@ package com.example.workdemo101;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -30,24 +38,40 @@ public class LogInActivity extends AppCompatActivity {
         Button loginbtn = findViewById(R.id.btnlogin);
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 String email = Email.getText().toString();
-                String password = Password.getText().toString();
-
-                if(email.equals("123@123.com") && password.equals("123123"))
+                String pass = Password.getText().toString();
+                if(email.equals("Jackylove@123.com") && pass.equals("123"))
                 {
-                    Toast.makeText(LogInActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(getApplicationContext(), Chat.class);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(LogInActivity.this, "Welcome", Toast.LENGTH_SHORT);
+                    startActivity(new Intent(LogInActivity.this,Chat.class));
                 }
                 else
                 {
-                    Toast.makeText(LogInActivity.this, "Please enter the correct password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LogInActivity.this, "Invalid", Toast.LENGTH_LONG);
                 }
             }
         });
-    }
-
 }
+    @SuppressLint("NewApi")
+    public Connection connection(){
+        Connection conn = null;
+        String ip="192.168.0.104", port="50308" , username="WorkDemo", password="123" , databasename="WrokDemo" ;
+        StrictMode.ThreadPolicy tp = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(tp);
+        try
+        {
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+            String connectionurl = "jdbc:jtds:sqlserver://"+ip+":"+port+";databasename="+databasename+";User="+username+";password="+password+";";
+            conn = DriverManager.getConnection(connectionurl);
+        }
+        catch (Exception exception)
+        {
+            Log.e("error", exception.getMessage());
+        }
+        return conn;
+    }
+}
+
 

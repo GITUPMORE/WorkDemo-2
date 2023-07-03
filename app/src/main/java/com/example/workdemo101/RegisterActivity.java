@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
     @SuppressLint("NewApi")
     public Connection connection(){
         Connection conn = null;
-        String ip="192.168.0.104", port="50068" , username="Demo", password="123", databasename="WorkDemo";
+        String ip="192.168.0.104", port="50308" , username="WorkDemo", password="123" , databasename="WrokDemo" ;
         StrictMode.ThreadPolicy tp = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(tp);
         try
