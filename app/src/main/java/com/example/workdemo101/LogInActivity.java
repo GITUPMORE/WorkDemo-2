@@ -68,7 +68,7 @@ public class LogInActivity extends AppCompatActivity {
 
                         while(rs.next())
                         {
-                            if (email != rs.getString(1) && pass != rs.getString(2))
+                            if (email.equals(rs.getString("Email")) && pass.equals(rs.getString("Password")))
                             {
                                 startActivity(new Intent(LogInActivity.this,Chat.class));
                             }
