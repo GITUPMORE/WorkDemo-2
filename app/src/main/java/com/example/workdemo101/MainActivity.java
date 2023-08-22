@@ -15,7 +15,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

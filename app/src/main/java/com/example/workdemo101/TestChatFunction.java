@@ -60,11 +60,11 @@ public class TestChatFunction extends AppCompatActivity {
         recyclerView.setLayoutManager(LinerLM);
 
         SendBtn.setOnClickListener((v)->{
-        String question = EditText.getText().toString().trim();
-        Chatting(question,ChatMessage.SENT_BY_ME);
-        EditText.setText("");
-        Chatgpt.setVisibility(View.GONE);
-        API(question);
+            String question = EditText.getText().toString().trim();
+            Chatting(question,ChatMessage.SENT_BY_ME);
+            EditText.setText("");
+            Chatgpt.setVisibility(View.GONE);
+            API(question);
         });
     }
 
@@ -89,7 +89,7 @@ public class TestChatFunction extends AppCompatActivity {
     {
         JSONObject JSON1 = new JSONObject();
         try {
-            JSON1.put("model" , "text-davinci-003");
+            JSON1.put("character_id" , "nWhL0kXu3Yw3g7Nsylig");
             JSON1.put("prompt" , question);
             JSON1.put("max_tokens" , 4000);
             JSON1.put("temperature" , 0);
@@ -98,8 +98,8 @@ public class TestChatFunction extends AppCompatActivity {
         }
         RequestBody Rbody = RequestBody.create(JSON1.toString(),JSON);
         Request request = new Request.Builder()
-                .url("https://api.chatanywhere.cn/v1/completions")
-                .header("Authorization" , "Bearer sk-PE9TZbeU9bTFHwZfuSuVisT7pIKIem91Zxbhp21iE4gty8Hi")
+                .url("https://api.chatfai.com/v1/chat")
+                .header("Authorization" , "Bearer 3032d09563b99b575d34aeb09ac05647cd5620aae3d94aa983a5b2c420aa92ac")
                 .post(Rbody)
                 .build();
         client.newCall(request).enqueue(new Callback() {
