@@ -53,12 +53,12 @@ public class Chat extends AppCompatActivity {
             }
         });
 
-        /*builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
             }
-        });*/
+        });
         builder.show();
     }
 }

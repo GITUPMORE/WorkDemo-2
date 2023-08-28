@@ -76,13 +76,13 @@
         android:id="@+id/Chatbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register Chat Account"
+        android:text="Chatting"
         app:layout_constraintBottom_toTopOf="@+id/ToolBar2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ToolBar"
-        app:layout_constraintVertical_bias="0.329" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <TextView
         android:id="@+id/TName"
